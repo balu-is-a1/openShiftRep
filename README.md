@@ -1,2 +1,0 @@
-# openShiftRep
-All related openshift
