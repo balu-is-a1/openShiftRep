@@ -23,12 +23,14 @@ public class pnrCreationDataObjectImpl implements pnrCreationDataObject {
 		PreparedStatement ps= null;
 		String pnrNumber = "";
 		String query = "";
-		String appendPNR = "PNR";
+		//String appendPNR = "PNR";
 		try {
 			con = DBConnectionManager.getInsatnce().getConnection();
 			pnrNumber = getMaxPnrNumber(con);
-			appendPNR = appendPNR+pnrNumber;
-			pnrNumber = appendPNR;
+			/*appendPNR = appendPNR+pnrNumber;
+			pnrNumber = appendPNR;*/
+			
+			con.setAutoCommit(false);
 			
 			query = QueryConstants.QUERY_INSERT_PNR_DETAILS;
 			ps = con.prepareStatement(query);
@@ -65,19 +67,23 @@ public class pnrCreationDataObjectImpl implements pnrCreationDataObject {
 					ps.addBatch();
 				}
 				
-				ps.executeBatch();
-				//int[] passInsertSize = ps.executeBatch();
-				/*if(passInsertSize.length > 0) {
-					System.out.println("Passengers Details Inserted successfully!!!");
+				//ps.executeBatch();
+				int[] passInsertSize = ps.executeBatch();
+				
+				if(passInsertSize.length > 0 && rowsInserted >0) {
+					con.commit();
+					//System.out.println("inserted pnr and passengers details successfully");
 				}else {
-					System.out.println("Error during Passengers Details Insertion");
-				}*/
+					con.rollback();
+				}
 			}else {
 				throw new Exception("Issue during data insert");
 			}
 		}catch(SQLException sql) {
+			con.rollback();
 			throw sql;
 		}catch(Exception ex) {
+			con.rollback();
 			throw ex;
 		}finally {
 			DBConnectionManager.closeResources(null, ps, con);
