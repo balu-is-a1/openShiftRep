@@ -1,11 +1,10 @@
 Manifest-Version: 1.0
-Implementation-Title: swagger-spring
+Implementation-Title: PnrService
 Implementation-Version: 1.0.0
 Built-By: 348959
-Implementation-Vendor-Id: io.swagger
+Implementation-Vendor-Id: com.cts.pnrservice
 Build-Jdk: 1.8.0_121
-Implementation-URL: http://projects.spring.io/spring-boot/swagger-spri
- ng/
+Implementation-URL: http://projects.spring.io/spring-boot/PnrService/
 Created-By: Maven Integration for Eclipse
 Implementation-Vendor: Pivotal Software, Inc.
 

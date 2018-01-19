@@ -53,13 +53,13 @@ public class DBConnectionManager {
 		Connection con = null;
 		
 		try {
-			Properties prop = ApplicationPropertiesManager.getProperties("src/main/resources/DBConfig.properties");
-			/*String host = "10.154.197.158";
+			//Properties prop = ApplicationPropertiesManager.getProperties("src/main/resources/DBConfig.properties");
+			String host = "10.154.197.158";
 			String port = "3306";
 			String name = "testdb?useSSL=false";
 			String username = "root";
 			String password = "tibco123";
-			System.out.println("1");
+			/*System.out.println("1");
 			String host = environment.getProperty("host");
 			System.out.println("2");
 			String port = environment.getProperty("port");
@@ -67,11 +67,11 @@ public class DBConnectionManager {
 			String username = environment.getProperty("username");
 			String password = environment.getProperty("password");*/
 		    
-			String host = prop.getProperty("host");
+			/*String host = prop.getProperty("host");
 			String port = prop.getProperty("port");
 			String name = prop.getProperty("name");
 			String username = prop.getProperty("username");
-			String password = prop.getProperty("password");
+			String password = prop.getProperty("password");*/
 			
 			String url = "jdbc:mysql://" + host + ":" + port + "/" + name;
 			
