@@ -4,7 +4,15 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.ExitCodeGenerator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.core.env.ConfigurableEnvironment;
+
+import com.cts.pnrservice.manager.DBConfig;
+import com.cts.pnrservice.manager.DBProperties;
 
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
@@ -21,6 +29,18 @@ public class Swagger2SpringBoot implements CommandLineRunner {
     }
 
     public static void main(String[] args) throws Exception {
+    	
+    	/*ConfigurableApplicationContext applicationContext = new SpringApplicationBuilder(Swagger2SpringBoot.class)
+                .properties("spring.config.name:application",
+                        "spring.config.location:classpath:/src/main/resources").build().run(args);
+ 
+        ConfigurableEnvironment environment = applicationContext.getEnvironment();*/
+        
+    	/*AbstractApplicationContext context = new AnnotationConfigApplicationContext(DBConfig.class);
+    	 
+    	DBProperties appProperties = context.getBean(DBProperties.class);
+ 
+        System.out.println("host-->"+appProperties.getHost());*/
     	
         new SpringApplication(Swagger2SpringBoot.class).run(args);
     }
